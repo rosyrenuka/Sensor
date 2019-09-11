@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30dp"
+    android:background="@color/background"
+    tools:context=".LoginForm">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:focusable="true"
+        android:layout_marginTop="1dp"
+        android:focusableInTouchMode="true"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="User Name"
+            android:id="@+id/user_username"
+            android:ems="10"
+            android:inputType="text"
+            android:textSize="20dp"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:focusable="true"
+        android:layout_marginTop="2dp"
+        android:focusableInTouchMode="true"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="Age"
+            android:id="@+id/user_age"
+            android:ems="10"
+            android:inputType="number"
+            android:textSize="20dp"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:focusable="true"
+        android:layout_marginTop="2dp"
+        android:focusableInTouchMode="true"
+
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="Contact Number"
+            android:ems="10"
+            android:id="@+id/user_contact"
+            android:inputType="number"
+            android:textSize="20dp"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:focusable="true"
+        android:layout_marginTop="2dp"
+        android:focusableInTouchMode="true"
+
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="Email Id"
+            android:ems="10"
+            android:id="@+id/user_email"
+            android:inputType="textEmailAddress"
+            android:textSize="20dp"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:layout_marginTop="2dp"
+        android:focusableInTouchMode="true"
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="Height"
+            android:ems="10"
+            android:id="@+id/user_height"
+            android:inputType="numberDecimal"
+            android:textSize="20dp"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:layout_marginTop="2dp"
+        android:focusableInTouchMode="true"
+
+        >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:hint="Weight"
+            android:ems="10"
+            android:id="@+id/user_weight"
+            android:inputType="numberDecimal"
+            android:textSize="20dp"
+            android:layout_height="wrap_content" />
+    </android.support.design.widget.TextInputLayout>
+<RadioGroup
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_marginTop="5dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:textColor="@color/orange"
+        android:textSize="20dp"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+
+        />
+
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:text="Male"
+        android:id="@+id/user_male"
+        android:layout_marginLeft="15dp"
+        android:textSize="20dp"
+        android:layout_height="wrap_content" />
+
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:text="Female"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="20dp"
+        android:layout_height="wrap_content" />
+
+
+
+</RadioGroup>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="2dp"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/orange"
+            android:textSize="18dp"
+            android:text="Smoking"/>
+
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/orange"
+            android:textSize="18dp"
+            android:text="Exercise"/>
+
+
+
+    </LinearLayout>
+
+
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Register"
+        android:textSize="15dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button_rounded"
+        android:textColor="#ffffff"
+
+        />
+
+</LinearLayout>
