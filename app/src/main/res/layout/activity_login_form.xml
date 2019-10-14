@@ -123,6 +123,7 @@
     android:layout_width="match_parent"
     android:orientation="horizontal"
     android:layout_marginTop="5dp"
+    android:id="@+id/user_gender"
     android:layout_height="wrap_content">
 
     <TextView
@@ -146,6 +147,7 @@
     <RadioButton
         android:layout_width="wrap_content"
         android:text="Female"
+        android:id="@+id/user_female"
         android:layout_marginRight="1dp"
         android:layout_marginLeft="5dp"
         android:textSize="20dp"
@@ -165,6 +167,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/orange"
+            android:id="@+id/user_smoke"
             android:textSize="18dp"
             android:text="Smoking"/>
 
@@ -174,6 +177,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:textColor="@color/orange"
+            android:id="@+id/user_exercise"
             android:textSize="18dp"
             android:text="Exercise"/>
 
@@ -182,18 +186,15 @@
     </LinearLayout>
 
 
-
-
-
     <Button
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:text="Register"
         android:textSize="15dp"
+        android:id="@+id/user_register"
         android:layout_marginTop="5dp"
         android:background="@drawable/button_rounded"
         android:textColor="#ffffff"
-
         />
 
 </LinearLayout>
