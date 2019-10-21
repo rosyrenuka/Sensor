@@ -37,14 +37,15 @@ Button registerButton;
 String username,contact,email;
 int age;
 double height,weight;
+double bmi = 0.0d;
 int gender,smoking,exercise;
 JSONObject userJSON = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_form);
-//        Intent intent = new Intent(getApplicationContext(),DataActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(getApplicationContext(),Optional.class);
+        startActivity(intent);
         usernameEditText = (EditText)findViewById(R.id.user_username);
         ageEditText = (EditText)findViewById(R.id.user_age);
         emailEditText = (EditText)findViewById(R.id.user_email);
@@ -92,11 +93,13 @@ JSONObject userJSON = null;
     {
         userJSON = new JSONObject();
         try {
+            bmi = (height/(weight*weight));
             userJSON.put("firstName",username);
             userJSON.put("age",age);
             userJSON.put("gender",gender);
             userJSON.put("height",height);
             userJSON.put("weight",weight);
+            userJSON.put("bmi",bmi);
             userJSON.put("smoking",smoking);
             userJSON.put("exercise",exercise);
             userJSON.put("mobile",contact);

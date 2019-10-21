@@ -46,7 +46,7 @@ public class DataActivity extends AppCompatActivity {
     public JSONObject readingsJson = null;
     int state = 0;
     View v;
-    TextView status,gsr,sysBP,diaBP,pulse;
+    TextView status,gsr,sysBP,diaBP,pulse,cholestrol;
     Button connect,collectGSR,collectBP,submitReadings;
 
     private BluetoothAdapter mBTAdapter;
@@ -73,8 +73,10 @@ public class DataActivity extends AppCompatActivity {
         sysBP = (TextView)findViewById(R.id.sysBP);
         diaBP = (TextView)findViewById(R.id.diaBP);
         pulse = (TextView)findViewById(R.id.pulse);
+        cholestrol = (TextView)findViewById(R.id.cholestrol);
 
         addFakeReadings();
+        cholestrol.setText(getIntent().getStringExtra("glucose"));
         connect = (Button)findViewById(R.id.connect);
         collectGSR = (Button)findViewById(R.id.collectGSR);
         collectBP = (Button)findViewById(R.id.collectBP);
@@ -90,7 +92,7 @@ public class DataActivity extends AppCompatActivity {
                         readMessage = new String((byte[]) msg.obj, "UTF-8");
                         Log.e(TAG, "handleMessage: "+readMessage);
                         if(readMessage.charAt(0)=='#') {
-                            gsr.setText(readMessage.substring(1));
+                            gsr.setText(readMessage.substring(1,readMessage.length()));
                         }
                         else if(readMessage.charAt(0)=='$')
                         {
@@ -186,7 +188,7 @@ public class DataActivity extends AppCompatActivity {
             readingsJson.put("diastolicBp",diaBP.getText().toString());
             readingsJson.put("pulse",pulse.getText().toString());
             readingsJson.put("gsr",gsr.getText().toString());
-            readingsJson.put("cholestrol","5.7");
+            readingsJson.put("cholestrol",cholestrol.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -419,14 +421,13 @@ public class DataActivity extends AppCompatActivity {
                     // Read from the InputStream
                     bytes = mmInStream.available();
                     if (bytes != 0) {
-                        SystemClock.sleep(1000); //pause and wait for rest of data. Adjust this depending on your sending speed.
+                        SystemClock.sleep(100); //pause and wait for rest of data. Adjust this depending on your sending speed.
                         bytes = mmInStream.available(); // how many bytes are ready to be read?
                         bytes = mmInStream.read(buffer, 0, bytes); // record how many bytes we actually read
                         Log.e("YE AAYA", "run: " + new String(buffer));
                         //reading.setText(new String(buffer).substring(1,bytes+1));
                         mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
                                 .sendToTarget(); // Send the obtained bytes to the UI activity
-
                         buffer = new byte[64];
                     }
                 } catch (IOException e) {
