@@ -183,7 +183,7 @@ public class DataActivity extends AppCompatActivity {
     private void createReadingsJson() {
         readingsJson = new JSONObject();
         try {
-            readingsJson.put("mobile","9821070658");
+            readingsJson.put("mobile",getSharedPreferences("shared",MODE_PRIVATE).getString("mobile",""));
             readingsJson.put("systolicBp",sysBP.getText().toString());
             readingsJson.put("diastolicBp",diaBP.getText().toString());
             readingsJson.put("pulse",pulse.getText().toString());

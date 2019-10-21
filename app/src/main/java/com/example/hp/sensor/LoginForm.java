@@ -1,6 +1,7 @@
 package com.example.hp.sensor;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatCheckBox;
@@ -35,17 +36,22 @@ RadioButton userMale,userFemale;
 CheckBox smokeingCheckbox,exerciseCheckbox;
 Button registerButton;
 String username,contact,email;
-int age;
-double height,weight;
+int age = 0;
+double height = 0.0d,weight = 0.0d;
 double bmi = 0.0d;
-int gender,smoking,exercise;
+int gender=0,smoking=0,exercise=0;
 JSONObject userJSON = null;
+SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_form);
-        Intent intent = new Intent(getApplicationContext(),Optional.class);
-        startActivity(intent);
+            sharedPreferences = getSharedPreferences("shared",MODE_PRIVATE);
+            if(!sharedPreferences.getString("mobile","").equals(""))
+            {
+                Intent intent = new Intent(getApplicationContext(),Optional.class);
+                startActivity(intent);
+            }
         usernameEditText = (EditText)findViewById(R.id.user_username);
         ageEditText = (EditText)findViewById(R.id.user_age);
         emailEditText = (EditText)findViewById(R.id.user_email);
@@ -93,7 +99,8 @@ JSONObject userJSON = null;
     {
         userJSON = new JSONObject();
         try {
-            bmi = (height/(weight*weight));
+            double h = height/(double)100;
+            bmi = (weight/(h*h));
             userJSON.put("firstName",username);
             userJSON.put("age",age);
             userJSON.put("gender",gender);
@@ -121,7 +128,10 @@ JSONObject userJSON = null;
                     public void onResponse(JSONObject response) {
                         try {
                             Log.e("TAG", "onPre book Response: "+response );
-                            Intent intent = new Intent(getApplicationContext(),DataActivity.class);
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            editor.putString("mobile",userJSON.getString("mobile"));
+                            editor.commit();
+                            Intent intent = new Intent(getApplicationContext(),Optional.class);
                             startActivity(intent);
 
                         } catch (Exception e) {
